@@ -1,0 +1,57 @@
+<div class="xelfinder">
+<h1><{$smarty.const._MD_XELFINDER_LANG_FILE_EDIT}></h1>
+<{if $actionForm->hasError()}>
+  <ul class="error">
+    <{foreach item=message from=$actionForm->getErrorMessages()}>
+      <li><{$message|xoops_escape}></li>
+    <{/foreach}>
+  </ul>
+<{/if}>
+<form action="<{xoops_cooluri dirname=$dirname dataname=file action=edit}>" method="post">
+  <dl class="edit">
+
+  <{xoops_input type=hidden name=file_id value=$actionForm->get('file_id')}>
+
+  <dt class="required"><{$smarty.const._MD_XELFINDER_LANG_NAME}></dt>
+  <dd><{xoops_input type=text name=name value=$actionForm->get('name') size=20 maxlength=255 class="required"}></dd>
+
+  <dt><{$smarty.const._MD_XELFINDER_LANG_PARENT_ID}></dt>
+  <dd><{xoops_input type=text name=parent_id value=$actionForm->get('parent_id') size=10}></dd>
+
+  <dt><{$smarty.const._MD_XELFINDER_LANG_SIZE}></dt>
+  <dd><{xoops_input type=text name=size value=$actionForm->get('size') size=10}></dd>
+
+  <dt><{$smarty.const._MD_XELFINDER_LANG_PERM}></dt>
+  <dd><{xoops_input type=text name=perm value=$actionForm->get('perm') size=20 maxlength=3}></dd>
+
+  <dt><{$smarty.const._MD_XELFINDER_LANG_UMASK}></dt>
+  <dd><{xoops_input type=text name=umask value=$actionForm->get('umask') size=20 maxlength=3}></dd>
+
+  <dt><{$smarty.const._MD_XELFINDER_LANG_C_TYPE}></dt>
+  <dd><{xoops_input type=text name=c_type value=$actionForm->get('c_type') size=10}></dd>
+
+  <dt><{$smarty.const._MD_XELFINDER_LANG_MIME}></dt>
+  <dd><{xoops_input type=text name=mime value=$actionForm->get('mime') size=20 maxlength=255}></dd>
+
+  <dt><{$smarty.const._MD_XELFINDER_LANG_WIDTH}></dt>
+  <dd><{xoops_input type=text name=width value=$actionForm->get('width') size=10}></dd>
+
+  <dt><{$smarty.const._MD_XELFINDER_LANG_HEIGHT}></dt>
+  <dd><{xoops_input type=text name=height value=$actionForm->get('height') size=10}></dd>
+
+    <{if $tag_dirname}>
+    <dt><{$smarty.const._TAG}></dt>
+    <dd>
+      <{xoops_input type=text name=tags value=$actionForm->get('tags')}>
+      <{legacy_tag_select tDirname=$tag_dirname tags=$object->mTag}>
+    </dd>
+    <{/if}>
+    <dt></dt>
+    <dd>
+      <{xoops_token form=$actionForm}>
+      <input type="submit" value="<{$smarty.const._SUBMIT}>" />
+      <input type="submit" value="<{$smarty.const._CANCEL}>" name="_form_control_cancel" />
+    </dd>
+  </dl>
+</form>
+</div>

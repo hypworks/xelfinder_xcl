@@ -1,0 +1,31 @@
+<div class="xelfinder">
+<h1><{$smarty.const._MD_XELFINDER_LANG_FILE}><{$smarty.const._VIEW}></h1>
+<dl class="view">
+  <dt><{$smarty.const._MD_XELFINDER_LANG_FILE_ID}></dt>
+  <dd><{$object->getShow('file_id')}></dd>
+  <dt><{$smarty.const._MD_XELFINDER_LANG_NAME}></dt>
+  <dd><{$object->getShow('name')}></dd>
+  <dt><{$smarty.const._MD_XELFINDER_LANG_UID}></dt>
+  <dd><{$object->getShow('uid')|xoops_user:user_name}></dd>
+  <dt><{$smarty.const._MD_XELFINDER_LANG_MTIME}></dt>
+  <dd><{$object->getShow('mtime')|xoops_formattimestamp:m}></dd>
+  <dt><{$smarty.const._MD_XELFINDER_LANG_PERM}></dt>
+  <dd><{$object->getShow('perm')}></dd>
+  <dt><{$smarty.const._MD_XELFINDER_LANG_UMASK}></dt>
+  <dd><{$object->getShow('umask')}></dd>
+  <dt><{$smarty.const._MD_XELFINDER_LANG_MIME}></dt>
+  <dd><{$object->getShow('mime')}></dd>
+  <dt><{$smarty.const._MD_XELFINDER_LANG_CTIME}></dt>
+  <dd><{$object->getShow('ctime')|xoops_formattimestamp:m}></dd>
+
+    <!-- tag -->
+    <{if count($object->mTag)>0}>
+    <dt class="tagList"><{$smarty.const._TAG}>: </dt>
+    <dd class="tagList">
+    <{foreach item=tag from=$object->mTag}>
+     <{assign var=tagurl value=$tag|xoops_escape:url}>
+      <span><a href="<{xoops_cooluri dirname=$dirname dataname=$dataname query="tag=`$tag`"}>"><{$tag|xoops_escape}></a></span> 
+    <{/foreach}>
+    <{/if}>
+</dl>
+</div>

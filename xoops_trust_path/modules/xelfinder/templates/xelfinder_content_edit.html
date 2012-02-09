@@ -1,0 +1,28 @@
+<div class="xelfinder">
+<h1><{$smarty.const._MD_XELFINDER_LANG_CONTENT_EDIT}></h1>
+<{if $actionForm->hasError()}>
+  <ul class="error">
+    <{foreach item=message from=$actionForm->getErrorMessages()}>
+      <li><{$message|xoops_escape}></li>
+    <{/foreach}>
+  </ul>
+<{/if}>
+<form action="<{xoops_cooluri dirname=$dirname dataname=content action=edit}>" method="post">
+  <dl class="edit">
+
+  <{xoops_input type=hidden name=content_id value=$actionForm->get('content_id')}>
+  <dt class="required"><{$smarty.const._MD_XELFINDER_LANG_CONTENT}></dt>
+  <dd><{xoops_textarea type=text name=content value=$actionForm->get('content') class="required"}></dd>
+
+  <dt><{$smarty.const._MD_XELFINDER_LANG_FILE_ID}></dt>
+  <dd><{xoops_input type=text name=file_id value=$actionForm->get('file_id') size=10}></dd>
+
+    <dt></dt>
+    <dd>
+      <{xoops_token form=$actionForm}>
+      <input type="submit" value="<{$smarty.const._SUBMIT}>" />
+      <input type="submit" value="<{$smarty.const._CANCEL}>" name="_form_control_cancel" />
+    </dd>
+  </dl>
+</form>
+</div>

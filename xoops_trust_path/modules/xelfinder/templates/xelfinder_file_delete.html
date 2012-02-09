@@ -1,0 +1,33 @@
+<div class="xelfinder">
+<h1><{$smarty.const._MD_XELFINDER_LANG_FILE_DELETE}></h1>
+
+<div class="confirm"><{$smarty.const._MD_XELFINDER_MESSAGE_CONFIRM_DELETE}></div>
+
+<form action="<{xoops_cooluri dirname=$dirname dataname=file action=delete}>" method="post">
+  <dl class="edit">
+  <dt><{$smarty.const._MD_XELFINDER_LANG_FILE_ID}></dt>
+  <dd><{$object->getShow('file_id')}></dd>
+  <dt><{$smarty.const._MD_XELFINDER_LANG_NAME}></dt>
+  <dd><{$object->getShow('name')}></dd>
+  <dt><{$smarty.const._MD_XELFINDER_LANG_UID}></dt>
+  <dd><{$object->getShow('uid')|xoops_user:user_name}></dd>
+  <dt><{$smarty.const._MD_XELFINDER_LANG_MTIME}></dt>
+  <dd><{$object->getShow('mtime')|xoops_formattimestamp:m}></dd>
+  <dt><{$smarty.const._MD_XELFINDER_LANG_PERM}></dt>
+  <dd><{$object->getShow('perm')}></dd>
+  <dt><{$smarty.const._MD_XELFINDER_LANG_UMASK}></dt>
+  <dd><{$object->getShow('umask')}></dd>
+  <dt><{$smarty.const._MD_XELFINDER_LANG_MIME}></dt>
+  <dd><{$object->getShow('mime')}></dd>
+  <dt><{$smarty.const._MD_XELFINDER_LANG_CTIME}></dt>
+  <dd><{$object->getShow('ctime')|xoops_formattimestamp:m}></dd>
+
+    <dd>
+      <{xoops_token form=$actionForm}>
+      <{xoops_input type=hidden name=file_id value=$actionForm->get('file_id')}>
+      <input type="submit" class="formButton" value="<{$smarty.const._DELETE}>"/>
+      <input type="submit" class="formButton" value="<{$smarty.const._CANCEL}>" name="_form_control_cancel"/>
+    </dd>
+  </dl>
+</form>
+</div>
